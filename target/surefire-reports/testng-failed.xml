@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Automation Suite 2]" parallel="none" allow-return-values="true">
+  <parameter name="app" value="/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/test/resources/build/pnma.apk"/>
+  <parameter name="waitTimeInSeconds" value="4"/>
+  <parameter name="appPackage" value=""/>
+  <parameter name="sauceUsername" value=""/>
+  <parameter name="appiumVersion" value="1.7.0"/>
+  <parameter name="deleteExistingReport" value="true"/>
+  <parameter name="isSauceLab" value="false"/>
+  <parameter name="deviceName" value="Android7"/>
+  <parameter name="platform" value="Android"/>
+  <parameter name="sauceAccessKey" value=""/>
+  <parameter name="platformVersion" value="7.1.1"/>
+  <parameter name="unicodeKeyboardStatus" value="true"/>
+  <parameter name="browserName" value=""/>
+  <parameter name="deviceOrientation" value="portrait"/>
+  <parameter name="resetKeyboardStatus" value="true"/>
+  <parameter name="appiumServerURL" value="http://127.0.0.1:4723/wd/hub"/>
+  <test name="iPhone 8 Plus iOS 11.2(failed)" parallel="none">
+    <parameter name="app" value="/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/test/resources/build/pnma.apk"/>
+    <parameter name="waitTimeInSeconds" value="4"/>
+    <parameter name="appPackage" value=""/>
+    <parameter name="sauceUsername" value=""/>
+    <parameter name="appiumVersion" value="1.7.0"/>
+    <parameter name="deleteExistingReport" value="true"/>
+    <parameter name="isSauceLab" value="false"/>
+    <parameter name="deviceName" value="Android7"/>
+    <parameter name="platform" value="Android"/>
+    <parameter name="sauceAccessKey" value=""/>
+    <parameter name="platformVersion" value="7.1.1"/>
+    <parameter name="unicodeKeyboardStatus" value="true"/>
+    <parameter name="browserName" value=""/>
+    <parameter name="deviceOrientation" value="portrait"/>
+    <parameter name="resetKeyboardStatus" value="true"/>
+    <parameter name="appiumServerURL" value="http://127.0.0.1:4723/wd/hub"/>
+    <classes>
+      <class name="com.mcoe.test.UITestCase">
+        <methods>
+          <include name="testIfScreenIsValid"/>
+          <include name="setupBeforeSuite"/>
+          <include name="setupBeforeTest"/>
+          <include name="setupBeforeClass"/>
+          <include name="testAppLaunch"/>
+          <include name="setUpTest"/>
+          <include name="testNavigateToMemberSignIN"/>
+          <include name="endReport"/>
+        </methods>
+      </class> <!-- com.mcoe.test.UITestCase -->
+    </classes>
+  </test> <!-- iPhone 8 Plus iOS 11.2(failed) -->
+</suite> <!-- Failed suite [Automation Suite 2] -->

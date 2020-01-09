@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="0" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Automation Suite" duration-ms="10" started-at="2018-02-19T10:50:18Z" finished-at="2018-02-19T10:50:18Z">
+    <groups>
+    </groups>
+    <test name="iPhone 8 Plus iOS 11.2" duration-ms="10" started-at="2018-02-19T10:50:18Z" finished-at="2018-02-19T10:50:18Z">
+      <class name="com.mcoe.test.FirstTest_Android">
+        <test-method status="PASS" signature="setupBeforeTest(java.lang.String, boolean)[pri:0, instance:com.mcoe.test.FirstTest_Android@7c0e2abd]" name="setupBeforeTest" is-config="true" duration-ms="7" started-at="2018-02-19T16:20:18Z" finished-at="2018-02-19T16:20:18Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Android]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[true]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupBeforeTest -->
+      </class> <!-- com.mcoe.test.FirstTest_Android -->
+    </test> <!-- iPhone 8 Plus iOS 11.2 -->
+  </suite> <!-- Automation Suite -->
+  <suite name="Automation Suite 2" duration-ms="0" started-at="2018-02-19T10:50:18Z" finished-at="2018-02-19T10:50:18Z">
+    <groups>
+    </groups>
+    <test name="iPhone 8 Plus iOS 11.2" duration-ms="0" started-at="2018-02-19T10:50:18Z" finished-at="2018-02-19T10:50:18Z">
+      <class name="com.mcoe.test.UITestCase">
+        <test-method status="PASS" signature="setupBeforeTest(java.lang.String, boolean)[pri:0, instance:com.mcoe.test.UITestCase@51efea79]" name="setupBeforeTest" is-config="true" duration-ms="0" started-at="2018-02-19T16:20:18Z" finished-at="2018-02-19T16:20:18Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[iOS]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[true]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupBeforeTest -->
+      </class> <!-- com.mcoe.test.UITestCase -->
+    </test> <!-- iPhone 8 Plus iOS 11.2 -->
+  </suite> <!-- Automation Suite 2 -->
+  <suite name="PNMA Test Suite" duration-ms="0" started-at="2018-02-19T10:50:18Z" finished-at="2018-02-19T10:50:18Z">
+    <groups>
+    </groups>
+  </suite> <!-- PNMA Test Suite -->
+</testng-results>

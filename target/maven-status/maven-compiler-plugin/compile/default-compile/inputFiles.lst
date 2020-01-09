@@ -1,0 +1,13 @@
+/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/main/java/com/mcoe/common/framework/ExtentReporter.java
+/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/main/java/com/mcoe/common/framework/GenericExecutor.java
+/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/main/java/com/mcoe/common/framework/provider/DriverProvider.java
+/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/main/java/com/mcoe/common/framework/constants/ExcelAttributes.java
+/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/main/java/com/mcoe/common/framework/provider/TestDataProvider.java
+/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/main/java/com/mcoe/common/framework/utils/GsonUtils.java
+/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/main/java/com/mcoe/common/framework/ElementInspector.java
+/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/main/java/com/mcoe/common/framework/constants/Parameter.java
+/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/main/java/com/mcoe/common/framework/constants/UIAttributes.java
+/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/main/java/com/mcoe/common/framework/provider/ExcelDataProvider.java
+/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/main/java/com/mcoe/common/framework/constants/Platform.java
+/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/main/java/com/mcoe/common/framework/utils/CommonUtils.java
+/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/main/java/com/mcoe/common/framework/provider/JSONDataProvider.java

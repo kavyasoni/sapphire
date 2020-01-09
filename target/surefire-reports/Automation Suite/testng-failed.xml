@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Automation Suite]" parallel="none" allow-return-values="true">
+  <parameter name="app" value="/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/test/resources/build/pnma.app"/>
+  <parameter name="waitTimeInSeconds" value="2"/>
+  <parameter name="appPackage" value=""/>
+  <parameter name="sauceUsername" value=""/>
+  <parameter name="appiumVersion" value="1.7.0"/>
+  <parameter name="isSauceLab" value="false"/>
+  <parameter name="deviceName" value="iPhone 8 Plus"/>
+  <parameter name="platform" value="iOS"/>
+  <parameter name="sauceAccessKey" value=""/>
+  <parameter name="platformVersion" value="11.2"/>
+  <parameter name="unicodeKeyboardStatus" value="true"/>
+  <parameter name="browserName" value=""/>
+  <parameter name="deviceOrientation" value="portrait"/>
+  <parameter name="resetKeyboardStatus" value="true"/>
+  <parameter name="appiumServerURL" value="http://127.0.0.1:4723/wd/hub"/>
+  <test name="iPhone 8 Plus iOS 11.2(failed)" parallel="none">
+    <parameter name="app" value="/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/test/resources/build/pnma.app"/>
+    <parameter name="waitTimeInSeconds" value="2"/>
+    <parameter name="appPackage" value=""/>
+    <parameter name="sauceUsername" value=""/>
+    <parameter name="appiumVersion" value="1.7.0"/>
+    <parameter name="isSauceLab" value="false"/>
+    <parameter name="deviceName" value="iPhone 8 Plus"/>
+    <parameter name="platform" value="iOS"/>
+    <parameter name="sauceAccessKey" value=""/>
+    <parameter name="platformVersion" value="11.2"/>
+    <parameter name="unicodeKeyboardStatus" value="true"/>
+    <parameter name="browserName" value=""/>
+    <parameter name="deviceOrientation" value="portrait"/>
+    <parameter name="resetKeyboardStatus" value="true"/>
+    <parameter name="appiumServerURL" value="http://127.0.0.1:4723/wd/hub"/>
+    <classes>
+      <class name="com.mcoe.test.SignInToApp_Android_PNMA509_944_iOS_PNMA2_1372">
+        <methods>
+          <include name="methodSetUp"/>
+          <include name="testSignInToApp_HappyPath"/>
+        </methods>
+      </class> <!-- com.mcoe.test.SignInToApp_Android_PNMA509_944_iOS_PNMA2_1372 -->
+    </classes>
+  </test> <!-- iPhone 8 Plus iOS 11.2(failed) -->
+</suite> <!-- Failed suite [Automation Suite] -->

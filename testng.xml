@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PNMA Test Suite">
+    <suite-files>
+        <suite-file path="ios_testng.xml"></suite-file>
+        <suite-file path="android_testng.xml"></suite-file>
+        <!--<suite-file path="android_testng2.xml"></suite-file>-->
+    </suite-files>
+</suite>

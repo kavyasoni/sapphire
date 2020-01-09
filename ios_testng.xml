@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Automation Suite" allow-return-values="true" verbose="1"
+       parallel="none">
+
+    <test name="iPhone 8 Plus iOS 11.2">
+
+        <!--Mandatory Parameter -->
+        //Device properties
+        <parameter name="platform" value="iOS"/>
+        <parameter name="platformVersion" value="11.2"/>
+        <parameter name="deviceName" value="iPhone 8 Plus"/>
+
+        // App file path (apk in case of Android and app in case of iOS)
+        <parameter name="app"
+                   value="/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/test/resources/build/pnma.app"/>
+
+        // Delay between test cases
+        <parameter name="waitTimeInSeconds" value="2"/>
+
+
+        <!--Optional Parameter -->
+        //Appium properties by default appiumServerURL = http://127.0.0.1:4723/wd/hub and appiumVersion = 1.7.0
+        <parameter name="appiumServerURL" value="http://127.0.0.1:4723/wd/hub"/>
+        <parameter name="appiumVersion" value="1.7.0"/>
+
+        <parameter name="browserName" value=""/>
+        <parameter name="appPackage" value=""/>
+
+        // Deired device Orientation portrait by default
+        <parameter name="deviceOrientation" value="portrait"/>
+
+        // Keyboard Status for Desired Capabilities in case of Android (default is true)
+        <parameter name="unicodeKeyboardStatus" value="true"/>
+        <parameter name="resetKeyboardStatus" value="true"/>
+
+        // Required in case of sauce lab execution in case any of below is invalid testcase will execute in
+        Emulator/Simulator
+        <parameter name="isSauceLab" value="false"/>
+        <parameter name="sauceAccessKey" value=""/>
+        <parameter name="sauceUsername" value=""/>
+
+        <classes>
+            <class name="com.mcoe.test.SignInToApp_Android_PNMA509_944_iOS_PNMA2_1372"></class>
+        </classes>
+    </test>
+</suite>
