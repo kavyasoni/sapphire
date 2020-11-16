@@ -1,4 +1,4 @@
-package com.mcoe.common.framework.constants;
+package com.evig.sapphire.constants;
 
 /**
  * Common Excel attributes used in automation application

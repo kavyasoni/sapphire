@@ -1,6 +1,6 @@
-package com.mcoe.test;
+package com.evig.sapphire.test;
 
-public interface ExcelAttributes extends com.mcoe.common.framework.constants.ExcelAttributes{
+public interface ExcelAttributes extends com.evig.sapphire.constants.ExcelAttributes {
 
     public String INVALID_EMAIL_ADDRESS_ATTRIBUTE = "InvalidEmailAddress";
     public String JOIN_PN_2OF2_BADGE_COPY_ATTRIBUTE = "BadgeCopy";

@@ -1,4 +1,4 @@
-package com.mcoe.common.framework.constants;
+package com.evig.sapphire.constants;
 
 /**
  * UI attributes used in Appium

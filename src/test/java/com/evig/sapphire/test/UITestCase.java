@@ -1,9 +1,8 @@
-package com.mcoe.test;
+package com.evig.sapphire.test;
 
-import com.mcoe.common.framework.GenericExecutor;
-import com.mcoe.common.framework.constants.Parameter;
-import com.mcoe.common.framework.provider.DriverProvider;
-import com.mcoe.common.framework.utils.CommonUtils;
+import com.evig.sapphire.GenericExecutor;
+import com.evig.sapphire.provider.DriverProvider;
+import com.evig.sapphire.utils.CommonUtils;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -18,7 +17,7 @@ public class UITestCase extends CommonSteps {
     private WebDriver driver;
 
     @SuppressWarnings("rawtypes")
-    @Parameters({Parameter.APP, Parameter.PLATFORM, Parameter.PLATFORM_VERSION, Parameter.DEVICE_NAME, Parameter.WAIT_TIME_IN_SECONDS})
+    @Parameters({APP, PLATFORM, PLATFORM_VERSION, DEVICE_NAME, WAIT_TIME_IN_SECONDS})
     @BeforeMethod
     public void setUpTest(String app, String platform, String platformVersion, String deviceName, int waitTimeInSeconds) throws InterruptedException {
         if (CommonUtils.isEmpty(app) || CommonUtils.isEmpty(platform) || CommonUtils.isEmpty(platformVersion) || CommonUtils.isEmpty(deviceName)) {

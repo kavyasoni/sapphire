@@ -1,4 +1,4 @@
-package com.mcoe.common.framework.constants;
+package com.evig.sapphire.constants;
 
 import io.appium.java_client.remote.MobilePlatform;
 

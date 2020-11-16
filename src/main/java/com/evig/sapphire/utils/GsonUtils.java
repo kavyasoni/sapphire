@@ -1,4 +1,4 @@
-package com.mcoe.common.framework.utils;
+package com.evig.sapphire.utils;
 
 import com.google.gson.*;
 import com.google.gson.annotations.Expose;

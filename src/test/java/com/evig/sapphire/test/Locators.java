@@ -1,4 +1,4 @@
-package com.mcoe.test;
+package com.evig.sapphire.test;
 
 public interface Locators {
 
@@ -148,7 +148,6 @@ public interface Locators {
     public static final String shopBadgeHintDescription = "//*[contains(@text,'Hint: Get shopping in the app, stat!')]";
     public static final String hookedBadgeCopy = "//*[contains(@text,'showing us some Bra Love')]";
     public static final String shopBadgeCopy = "//*[contains(@text,'Cause you got your shop on')]";
-
 
 
     //Navigation

@@ -1,4 +1,4 @@
-package com.mcoe.common.framework.constants;
+package com.evig.sapphire.constants;
 
 public interface Parameter {
     String PLATFORM = "platform";

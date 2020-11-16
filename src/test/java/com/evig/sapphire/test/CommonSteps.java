@@ -1,9 +1,9 @@
-package com.mcoe.test;
+package com.evig.sapphire.test;
 
-import com.mcoe.common.framework.GenericExecutor;
-import com.mcoe.common.framework.constants.Parameter;
-import com.mcoe.common.framework.constants.Platform;
-import com.mcoe.common.framework.utils.CommonUtils;
+import com.evig.sapphire.GenericExecutor;
+import com.evig.sapphire.constants.Parameter;
+import com.evig.sapphire.constants.Platform;
+import com.evig.sapphire.utils.CommonUtils;
 import org.openqa.selenium.WebElement;
 
 import java.util.HashMap;
@@ -14,10 +14,10 @@ public class CommonSteps implements Parameter, ExcelAttributes, Locators {
     protected String platform;
 
     protected void startReporting(HashMap<String, String> data) {
-        if (data == null || data.isEmpty() || CommonUtils.isEmpty(data.get(ExcelAttributes.TEST_CASE)))
+        if (data == null || data.isEmpty() || CommonUtils.isEmpty(data.get(TEST_CASE)))
             startReporting(this.getClass().getSimpleName() + "TestCase", "Test case for class " + this.getClass().getName());
         else
-            startReporting(data.get(ExcelAttributes.TEST_CASE), null);
+            startReporting(data.get(TEST_CASE), null);
     }
 
     protected void startReporting(String testName, String testDescription) {
@@ -35,9 +35,9 @@ public class CommonSteps implements Parameter, ExcelAttributes, Locators {
      * @return boolean returns true if login is successful and dashboard title bar is visible else false
      */
     protected boolean loginToAppWithCredentials(HashMap<String, String> data) {
-        if (data == null || data.isEmpty() || CommonUtils.isEmpty(data.get(ExcelAttributes.TEST_CASE)))
+        if (data == null || data.isEmpty() || CommonUtils.isEmpty(data.get(TEST_CASE)))
             return false;
-        return loginToAppWithCredentials(data.get(ExcelAttributes.EMAIL_ADDRESS), data.get(ExcelAttributes.PASSWORD), true);
+        return loginToAppWithCredentials(data.get(EMAIL_ADDRESS), data.get(ExcelAttributes.PASSWORD), true);
     }
 
     /**
@@ -47,9 +47,9 @@ public class CommonSteps implements Parameter, ExcelAttributes, Locators {
      * @return boolean returns true if login is successful and dashboard title bar is visible else false
      */
     protected boolean loginToAppWithCredentials(HashMap<String, String> data, boolean validateError) {
-        if (data == null || data.isEmpty() || CommonUtils.isEmpty(data.get(ExcelAttributes.TEST_CASE)))
+        if (data == null || data.isEmpty() || CommonUtils.isEmpty(data.get(TEST_CASE)))
             return false;
-        return loginToAppWithCredentials(data.get(ExcelAttributes.EMAIL_ADDRESS), data.get(ExcelAttributes.PASSWORD), validateError);
+        return loginToAppWithCredentials(data.get(EMAIL_ADDRESS), data.get(ExcelAttributes.PASSWORD), validateError);
     }
 
     /**
@@ -315,7 +315,7 @@ public class CommonSteps implements Parameter, ExcelAttributes, Locators {
                 genericExecutor.clickOnElement(birthdayWebElement);
 
                 if (platform.equals(Platform.ANDROID)) {
-                    genericExecutor.clickOnElement(Locators.OK_BUTTON_LOCATOR);
+                    genericExecutor.clickOnElement(OK_BUTTON_LOCATOR);
                 } else {
                     genericExecutor.performScroll(299, 639, 298, 697);
                     genericExecutor.waitForOneSecond();
@@ -349,7 +349,7 @@ public class CommonSteps implements Parameter, ExcelAttributes, Locators {
                 genericExecutor.clickOnElement(gradYearWebElement);
 
                 if (platform.equals(Platform.ANDROID)) {
-                    genericExecutor.clickOnElement(Locators.OK_BUTTON_LOCATOR);
+                    genericExecutor.clickOnElement(OK_BUTTON_LOCATOR);
                 } else {
                     genericExecutor.performScroll(299, 639, 298, 697);
                     genericExecutor.waitForOneSecond();
@@ -420,9 +420,9 @@ public class CommonSteps implements Parameter, ExcelAttributes, Locators {
     }
 
     protected boolean navigateToJoin2of2Screen(String emailAddress) {
-        genericExecutor.clickOnElement(Locators.JOIN_PINK_NATION_BTN_LOCATOR);
+        genericExecutor.clickOnElement(JOIN_PINK_NATION_BTN_LOCATOR);
         genericExecutor.setTextInElementsContainsLabel(emailAddress, EMAIL_LABEL);
-        genericExecutor.clickOnElement(Locators.CONTINUE_BUTTON_LOCATOR);
+        genericExecutor.clickOnElement(CONTINUE_BUTTON_LOCATOR);
 
         genericExecutor.waitForSeconds(waitTimeInSeconds);
         // Check if error dialog is displayed

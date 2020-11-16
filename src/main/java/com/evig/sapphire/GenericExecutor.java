@@ -1,9 +1,9 @@
-package com.mcoe.common.framework;
+package com.evig.sapphire;
 
 import com.codeborne.selenide.WebDriverRunner;
-import com.mcoe.common.framework.constants.Platform;
-import com.mcoe.common.framework.provider.DriverProvider;
-import com.mcoe.common.framework.utils.CommonUtils;
+import com.evig.sapphire.constants.Platform;
+import com.evig.sapphire.provider.DriverProvider;
+import com.evig.sapphire.utils.CommonUtils;
 import com.relevantcodes.extentreports.LogStatus;
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.TouchAction;
@@ -25,7 +25,7 @@ public class GenericExecutor extends ElementInspector {
 
     public GenericExecutor(DriverProvider driverProvider) throws MalformedURLException {
         super(driverProvider, driverProvider.capabilitiesBuilder.platform);
-        extentReporter = new ExtentReporter(driver, driverProvider.capabilitiesBuilder);
+        extentReporter = new ExtentReporter(dtextriver, driverProvider.capabilitiesBuilder);
         WebDriverRunner.setWebDriver(driver);
     }
 

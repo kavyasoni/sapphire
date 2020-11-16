@@ -1,7 +1,7 @@
-package com.mcoe.common.framework.provider;
+package com.evig.sapphire.provider;
 
-import com.mcoe.common.framework.constants.Platform;
-import com.mcoe.common.framework.utils.CommonUtils;
+import com.evig.sapphire.constants.Platform;
+import com.evig.sapphire.utils.CommonUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;

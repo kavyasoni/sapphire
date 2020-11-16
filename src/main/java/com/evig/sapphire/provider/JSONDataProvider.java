@@ -1,8 +1,8 @@
-package com.mcoe.common.framework.provider;
+package com.evig.sapphire.provider;
 
+import com.evig.sapphire.utils.GsonUtils;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import com.mcoe.common.framework.utils.GsonUtils;
 
 import java.io.*;
 import java.lang.reflect.Type;

@@ -1,10 +1,10 @@
-package com.mcoe.test;
+package com.evig.sapphire.test;
 
-import com.mcoe.common.framework.GenericExecutor;
-import com.mcoe.common.framework.constants.ExcelAttributes;
-import com.mcoe.common.framework.provider.DriverProvider;
-import com.mcoe.common.framework.provider.TestDataProvider;
-import com.mcoe.common.framework.utils.CommonUtils;
+import com.evig.sapphire.GenericExecutor;
+import com.evig.sapphire.constants.ExcelAttributes;
+import com.evig.sapphire.provider.DriverProvider;
+import com.evig.sapphire.provider.TestDataProvider;
+import com.evig.sapphire.utils.CommonUtils;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.*;

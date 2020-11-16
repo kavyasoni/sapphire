@@ -1,8 +1,8 @@
-package com.mcoe.test;
+package com.evig.sapphire.test;
 
-import com.mcoe.common.framework.constants.Platform;
-import com.mcoe.common.framework.provider.TestDataProvider;
-import com.mcoe.common.framework.utils.CommonUtils;
+import com.evig.sapphire.constants.Platform;
+import com.evig.sapphire.provider.TestDataProvider;
+import com.evig.sapphire.utils.CommonUtils;
 import org.testng.ITestContext;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

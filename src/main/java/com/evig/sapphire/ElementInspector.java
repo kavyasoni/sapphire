@@ -1,9 +1,9 @@
-package com.mcoe.common.framework;
+package com.evig.sapphire;
 
-import com.mcoe.common.framework.constants.Platform;
-import com.mcoe.common.framework.constants.UIAttributes;
-import com.mcoe.common.framework.provider.DriverProvider;
-import com.mcoe.common.framework.utils.CommonUtils;
+import com.evig.sapphire.constants.Platform;
+import com.evig.sapphire.constants.UIAttributes;
+import com.evig.sapphire.provider.DriverProvider;
+import com.evig.sapphire.utils.CommonUtils;
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.*;
@@ -21,11 +21,11 @@ import java.util.concurrent.TimeUnit;
  * Created by ksoni on 01/05/18.
  */
 public class ElementInspector {
+    protected final String platform;
     final DriverProvider driverProvider;
+    protected WebDriver driver;
     int defaultWaitTimeInSeconds = 1;
     int defaultPageScroll = 1;
-    protected final String platform;
-    protected WebDriver driver;
 
     public ElementInspector(DriverProvider driverProvider, String platform) throws MalformedURLException {
         this.platform = platform;

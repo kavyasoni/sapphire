@@ -1,9 +1,9 @@
-package com.mcoe.test;
+package com.evig.sapphire.test;
 
-import com.mcoe.common.framework.GenericExecutor;
-import com.mcoe.common.framework.constants.Platform;
-import com.mcoe.common.framework.provider.DriverProvider;
-import com.mcoe.common.framework.utils.CommonUtils;
+import com.evig.sapphire.GenericExecutor;
+import com.evig.sapphire.constants.Platform;
+import com.evig.sapphire.provider.DriverProvider;
+import com.evig.sapphire.utils.CommonUtils;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -95,10 +95,10 @@ public class FirstTest_Android extends CommonSteps {
         Assert.assertFalse(genericExecutor.isElementsDisplayedContainsLabel("member sign"));
 
 
-        Assert.assertTrue(genericExecutor.validateAppLaunchWithElements(Locators.MEMBER_SIGN_IN, Locators.MEMBER_SIGN_IN));
+        Assert.assertTrue(genericExecutor.validateAppLaunchWithElements(MEMBER_SIGN_IN, MEMBER_SIGN_IN));
 
         genericExecutor.waitForOneSecond();
-        genericExecutor.clickOnElement(Locators.MEMBER_SIGN_IN);
+        genericExecutor.clickOnElement(MEMBER_SIGN_IN);
 
         genericExecutor.waitForOneSecond();
         genericExecutor.setTextInElementsWithLabel(email, "Email");
@@ -106,7 +106,7 @@ public class FirstTest_Android extends CommonSteps {
         genericExecutor.waitForOneSecond();
         genericExecutor.setTextInElementsWithLabel(password, "Password");
 
-        genericExecutor.clickOnElement(Locators.SIGN_IN_BUTTON);
+        genericExecutor.clickOnElement(SIGN_IN_BUTTON);
     }
 
     @AfterMethod

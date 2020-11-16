@@ -1,7 +1,7 @@
-package com.mcoe.common.framework;
+package com.evig.sapphire;
 
-import com.mcoe.common.framework.provider.DriverProvider;
-import com.mcoe.common.framework.utils.CommonUtils;
+import com.evig.sapphire.provider.DriverProvider;
+import com.evig.sapphire.utils.CommonUtils;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;

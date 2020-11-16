@@ -1,6 +1,6 @@
-package com.mcoe.common.framework.utils;
+package com.evig.sapphire.utils;
 
-import com.mcoe.common.framework.constants.Platform;
+import com.evig.sapphire.constants.Platform;
 import org.apache.commons.io.FileUtils;
 import org.aspectj.util.FileUtil;
 import org.openqa.selenium.OutputType;
@@ -99,16 +99,6 @@ public class CommonUtils {
         return !isEmpty(string);
     }
 
-    public String getFormattedDate() {
-        Date date = new Date();
-        //Pattern for showing milliseconds in the time yyyy-MM-dd HH:mm:ss.SSS
-        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String stringDate = sdf.format(date);
-        //Using Calendar class
-        Calendar cal = Calendar.getInstance();
-        return sdf.format(cal.getTime());
-    }
-
     /**
      * Method to generate random email id
      *
@@ -126,5 +116,15 @@ public class CommonUtils {
                 "+(\\.[\\w]+)*" + // Can contain subdomain _test.te+st@test.co.in
                 "(\\.[A-Za-z]{2,})$"; // Can end only with string _test.te+st@test.co.in
         return email.matches(emailPattern);
+    }
+
+    public String getFormattedDate() {
+        Date date = new Date();
+        //Pattern for showing milliseconds in the time yyyy-MM-dd HH:mm:ss.SSS
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String stringDate = sdf.format(date);
+        //Using Calendar class
+        Calendar cal = Calendar.getInstance();
+        return sdf.format(cal.getTime());
     }
 }
