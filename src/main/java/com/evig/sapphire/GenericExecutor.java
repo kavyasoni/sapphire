@@ -9,6 +9,7 @@ import io.appium.java_client.MobileDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -701,10 +702,9 @@ public class GenericExecutor extends ElementInspector {
     public void performScroll(int fromX, int fromY, int toX, int toY) {
         extentReporter.trackReport(true, "Performing scroll from (" + fromX + "," + fromY + ") to (" + toX + "," + toY + ").");
         TouchAction action = new TouchAction((MobileDriver<WebElement>) driver);
-        if (platform.equals(Platform.ANDROID))
-            action.press(fromX, fromY).waitAction((int) Timer.ONE_SECOND).moveTo(toX, toY).release().perform();
-        else
-            action.press(fromX, fromY).moveTo(toX, toY).release().perform();
+        action.longPress(PointOption.point(fromX, fromY))
+                .moveTo(PointOption.point(toX, toY))
+                .release().perform();
     }
 
     /**
