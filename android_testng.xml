@@ -13,7 +13,7 @@
 
         // App file path (apk in case of Android and app in case of iOS)
         <parameter name="app"
-                   value="/Users/ksoni/Development/Automation/workspace/AutomationBaseFramework/src/test/resources/build/pnma.apk"/>
+                   value="/Users/ksoni/Development/Automation/workspace/Sapphire/src/test/resources/build/pnma.apk"/>
 
         // Delay between test cases
         <parameter name="waitTimeInSeconds" value="5"/>
@@ -43,7 +43,7 @@
         <parameter name="deleteExistingReport" value="true"/>
 
         <classes>
-            <class name="com.mcoe.test.FirstTest_Android"></class>
+            <class name="FirstTest_Android"></class>
         </classes>
     </test>
 </suite>
