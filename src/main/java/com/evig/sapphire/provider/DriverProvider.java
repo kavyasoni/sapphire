@@ -37,9 +37,12 @@ public class DriverProvider {
      * @throws MalformedURLException Requires description
      */
     public WebDriver getDriver() throws MalformedURLException {
-        DesiredCapabilities capabilities;
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("deviceName", capabilitiesBuilder.deviceName);
+        capabilities.setCapability("platformVersion", capabilitiesBuilder.platformVersion);
+
         if (capabilitiesBuilder.platform.equalsIgnoreCase(Platform.ANDROID)) {
-            capabilities = DesiredCapabilities.android();
             capabilities.setCapability(AndroidMobileCapabilityType.AVD, capabilitiesBuilder.deviceName);
 
             // Set app package if not null or empty
@@ -47,11 +50,6 @@ public class DriverProvider {
                 capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, capabilitiesBuilder.appPackage);
 
         } else {
-            if (capabilitiesBuilder.deviceName.contains(Platform.iPAD)) {
-                capabilities = DesiredCapabilities.ipad();
-            } else {
-                capabilities = DesiredCapabilities.iphone();
-            }
             capabilities.setCapability("automationName", "XCUITest");
             capabilities.setCapability(IOSMobileCapabilityType.SHOW_IOS_LOG, true);
 
