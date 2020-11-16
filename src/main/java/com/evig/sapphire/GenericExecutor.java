@@ -25,7 +25,7 @@ public class GenericExecutor extends ElementInspector {
 
     public GenericExecutor(DriverProvider driverProvider) throws MalformedURLException {
         super(driverProvider, driverProvider.capabilitiesBuilder.platform);
-        extentReporter = new ExtentReporter(dtextriver, driverProvider.capabilitiesBuilder);
+        extentReporter = new ExtentReporter(driver, driverProvider.capabilitiesBuilder);
         WebDriverRunner.setWebDriver(driver);
     }
 
