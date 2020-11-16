@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -166,7 +167,8 @@ public class ElementInspector {
         }
         if (waitTimeInSeconds > 0) {
             try {
-                WebDriverWait webDriverWait = new WebDriverWait(driver, waitTimeInSeconds);
+
+                WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(waitTimeInSeconds));
                 if (clickable) {
                     return webDriverWait.until(ExpectedConditions.elementToBeClickable(xpath));
                 }
