@@ -4,10 +4,7 @@ import com.evig.sapphire.constants.ExcelAttributes;
 import com.evig.sapphire.utils.CommonUtils;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
@@ -129,26 +126,25 @@ class ExcelDataProvider {
     private static String getCellData(Cell cell) {
         if (cell == null)
             return "";
-        switch (cell.getCellType()) {
-            case Cell.CELL_TYPE_STRING:
-                return cell.getStringCellValue().trim();
-            case Cell.CELL_TYPE_BOOLEAN:
-                return String.valueOf(cell.getBooleanCellValue());
-            case Cell.CELL_TYPE_NUMERIC:
-            case Cell.CELL_TYPE_FORMULA:
-                if (HSSFDateUtil.isCellDateFormatted(cell)) {
-                    // format in form of M/D/YY
-                    double d = cell.getNumericCellValue();
-                    Calendar cal = Calendar.getInstance();
-                    cal.setTime(HSSFDateUtil.getJavaDate(d));
-                    String cellData = (String.valueOf(cal.get(Calendar.YEAR))).substring(2);
-                    cellData = cal.get(Calendar.DAY_OF_MONTH) + "/"
-                            + cal.get(Calendar.MONTH) + 1 + "/"
-                            + cellData;
-                    return cellData;
-                } else
-                    return String.valueOf(cell.getNumericCellValue());
+        if (cell.getCellType() == CellType.STRING) {
+            return cell.getStringCellValue().trim();
+        } else if (cell.getCellType() == CellType.BOOLEAN) {
+            return String.valueOf(cell.getBooleanCellValue());
+        } else if (cell.getCellType() == CellType.NUMERIC || cell.getCellType() == CellType.FORMULA) {
+            if (DateUtil.isCellDateFormatted(cell)) {
+                // format in form of M/D/YY
+                double d = cell.getNumericCellValue();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(HSSFDateUtil.getJavaDate(d));
+                String cellData = (String.valueOf(cal.get(Calendar.YEAR))).substring(2);
+                cellData = cal.get(Calendar.DAY_OF_MONTH) + "/"
+                        + cal.get(Calendar.MONTH) + 1 + "/"
+                        + cellData;
+                return cellData;
+            } else
+                return String.valueOf(cell.getNumericCellValue());
         }
+
         return "";
     }
 
