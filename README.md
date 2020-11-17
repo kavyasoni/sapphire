@@ -1,4 +1,4 @@
-# Base Framework For Automation Testing
+# Sapphire Mobile Automation Testing Framework
 
 #### **How to add artifact in maven?**
     Step1. Download latest jar  (artifact/Sapphire.jar)
@@ -7,7 +7,7 @@
          
          example
 
-        mvn install:install-file -Dfile=/Users/ksoni/Sapphire.jar -DgroupId=com.evig.sapphire -DartifactId=sapphire -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true
+        mvn install:install-file -Dfile=/Users/ksoni/sapphire.jar -DgroupId=com.evig.sapphire -DartifactId=sapphire -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true
     Step3. Add below dependency in pom.xml
 
             <dependency>
