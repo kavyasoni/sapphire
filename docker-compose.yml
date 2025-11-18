@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  appium:
+    image: appium/appium:v2.0.0
+    ports:
+      - "4723:4723"
+    environment:
+      - APPIUM_HOST=0.0.0.0
+      - APPIUM_PORT=4723
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4723/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  android-emulator:
+    image: budtmo/docker-android:emulator_13.0
+    privileged: true
+    ports:
+      - "6080:6080"
+      - "5554:5554"
+      - "5555:5555"
+    environment:
+      - EMULATOR_DEVICE=Samsung Galaxy S10
+      - WEB_VNC=true
+    depends_on:
+      - appium
+    healthcheck:
+      test: ["CMD", "adb", "devices"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
+
+  sapphire-tests:
+    build: .
+    depends_on:
+      appium:
+        condition: service_healthy
+      android-emulator:
+        condition: service_healthy
+    environment:
+      - APPIUM_SERVER_URL=http://appium:4723
+      - HEADLESS=true
+      - SCREENSHOT_ON_FAILURE=true
+    volumes:
+      - ./report:/sapphire/report
+      - ./logs:/sapphire/logs
+      - ./screenshots:/sapphire/screenshots
+    command: mvn test -Dappium.server.url=http://appium:4723
+
+volumes:
+  report:
+  logs:
+  screenshots:
