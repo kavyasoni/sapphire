@@ -1,8 +1,9 @@
 # Compiled class file
 *.class
 
-# Log file
+# Log files
 *.log
+logs/
 
 # BlueJ files
 *.ctxt
@@ -10,7 +11,7 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
+# Package Files
 *.jar
 *.war
 *.nar
@@ -19,12 +20,129 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Virtual machine crash logs
 hs_err_pid*
-.idea/.name
+replay_pid*
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# IDE - IntelliJ IDEA
 .idea/
-.idea*
+*.iws
+*.iml
+*.ipr
+out/
+.idea_modules/
+
+# IDE - Eclipse
+.classpath
+.project
+.settings/
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.recommenders
+
+# IDE - VS Code
+.vscode/
+*.code-workspace
+
+# IDE - NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Mac OS
 .DS_Store
-.idea/compiler.xml
-.idea/jarRepositories.xml
-.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# Test Reports
+report/
+test-output/
+allure-results/
+allure-report/
+extent-reports/
+screenshots/
+videos/
+
+# Coverage
+.jacoco/
+jacoco.exec
+*.coverage
+
+# Appium
+node_modules/
+package-lock.json
+appium.log
+
+# Test Data (do not commit sensitive data)
+**/test-data/**/*.xlsx
+**/test-data/**/*.xls
+**/test-data/**/*.json
+!**/test-data/**/example*.xlsx
+!**/test-data/**/example*.json
+
+# Credentials and secrets
+*.env
+.env.*
+!.env.example
+credentials.json
+secrets.properties
+**/credentials/
+
+# Mobile apps (usually too large)
+*.apk
+*.ipa
+*.app
+*.aab
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Other
+*.orig
