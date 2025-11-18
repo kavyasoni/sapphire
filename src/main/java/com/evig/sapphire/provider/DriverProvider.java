@@ -4,16 +4,14 @@ import com.evig.sapphire.constants.Platform;
 import com.evig.sapphire.utils.CommonUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.remote.AndroidMobileCapabilityType;
-import io.appium.java_client.remote.IOSMobileCapabilityType;
-import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.ios.options.XCUITestOptions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,77 +22,109 @@ import java.util.Map;
  */
 public class DriverProvider {
     public final CapabilitiesBuilder capabilitiesBuilder;
-    private final ThreadLocal<AppiumDriver<WebElement>> driver = new ThreadLocal<>();
+    private final ThreadLocal<AppiumDriver> driver = new ThreadLocal<>();
 
     public DriverProvider(CapabilitiesBuilder capabilitiesBuilder) {
         this.capabilitiesBuilder = capabilitiesBuilder;
     }
 
     /**
-     * Method to provide Driver based on DesiredCapabilities
+     * Method to provide Driver based on modern Appium 2.x Options (UiAutomator2Options / XCUITestOptions)
      *
-     * @return WebDriver Requires description
-     * @throws MalformedURLException Requires description
+     * @return WebDriver instance configured with appropriate options
+     * @throws MalformedURLException if Appium server URL is malformed
      */
     public WebDriver getDriver() throws MalformedURLException {
+        URL serverUrl;
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName", capabilitiesBuilder.deviceName);
-        capabilities.setCapability("platformVersion", capabilitiesBuilder.platformVersion);
+        if (capabilitiesBuilder.isSauceLab && CommonUtils.isNotEmpty(capabilitiesBuilder.sauceUsername)
+                && CommonUtils.isNotEmpty(capabilitiesBuilder.sauceAccessKey)) {
+            serverUrl = new URL("http://" + capabilitiesBuilder.sauceUsername + ":" +
+                    capabilitiesBuilder.sauceAccessKey + "@ondemand.saucelabs.com:80/wd/hub");
+        } else {
+            serverUrl = new URL(capabilitiesBuilder.appiumServerURL);
+        }
 
         if (capabilitiesBuilder.platform.equalsIgnoreCase(Platform.ANDROID)) {
-            capabilities.setCapability(AndroidMobileCapabilityType.AVD, capabilitiesBuilder.deviceName);
+            UiAutomator2Options options = new UiAutomator2Options();
 
-            // Set app package if not null or empty
-            if (CommonUtils.isNotEmpty(capabilitiesBuilder.appPackage))
-                capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, capabilitiesBuilder.appPackage);
+            // Core capabilities
+            options.setDeviceName(capabilitiesBuilder.deviceName);
+            options.setPlatformVersion(capabilitiesBuilder.platformVersion);
+            options.setApp(capabilitiesBuilder.app);
 
+            // Android-specific capabilities
+            if (CommonUtils.isNotEmpty(capabilitiesBuilder.deviceName)) {
+                options.setAvd(capabilitiesBuilder.deviceName);
+            }
+
+            if (CommonUtils.isNotEmpty(capabilitiesBuilder.appPackage)) {
+                options.setAppPackage(capabilitiesBuilder.appPackage);
+            }
+
+            // Keyboard settings
+            options.setUnicodeKeyboard(capabilitiesBuilder.unicodeKeyboardStatus);
+            options.setResetKeyboard(capabilitiesBuilder.resetKeyboardStatus);
+
+            // Browser name if specified
+            if (CommonUtils.isNotEmpty(capabilitiesBuilder.browserName)) {
+                options.setBrowserName(capabilitiesBuilder.browserName);
+            }
+
+            // Orientation
+            if (CommonUtils.isNotEmpty(capabilitiesBuilder.orientation)) {
+                options.setOrientation(capabilitiesBuilder.orientation);
+            }
+
+            // Extra capabilities
+            if (!capabilitiesBuilder.extraCapabilitiesMap.isEmpty()) {
+                for (Map.Entry<String, String> entry : capabilitiesBuilder.extraCapabilitiesMap.entrySet()) {
+                    options.setCapability(entry.getKey(), entry.getValue());
+                }
+            }
+
+            // Implicit wait
+            options.setNewCommandTimeout(Duration.ofSeconds(capabilitiesBuilder.waitTimeInSeconds));
+
+            driver.set(new AndroidDriver(serverUrl, options));
         } else {
-            capabilities.setCapability("automationName", "XCUITest");
-            capabilities.setCapability(IOSMobileCapabilityType.SHOW_IOS_LOG, true);
+            XCUITestOptions options = new XCUITestOptions();
 
+            // Core capabilities
+            options.setDeviceName(capabilitiesBuilder.deviceName);
+            options.setPlatformVersion(capabilitiesBuilder.platformVersion);
+            options.setApp(capabilitiesBuilder.app);
+
+            // iOS-specific capabilities
+            options.setShowIOSLog(true);
+
+            // Keyboard settings
+            options.setUnicodeKeyboard(capabilitiesBuilder.unicodeKeyboardStatus);
+            options.setResetKeyboard(capabilitiesBuilder.resetKeyboardStatus);
+
+            // Browser name if specified
+            if (CommonUtils.isNotEmpty(capabilitiesBuilder.browserName)) {
+                options.setBrowserName(capabilitiesBuilder.browserName);
+            }
+
+            // Orientation
+            if (CommonUtils.isNotEmpty(capabilitiesBuilder.orientation)) {
+                options.setOrientation(capabilitiesBuilder.orientation);
+            }
+
+            // Extra capabilities
+            if (!capabilitiesBuilder.extraCapabilitiesMap.isEmpty()) {
+                for (Map.Entry<String, String> entry : capabilitiesBuilder.extraCapabilitiesMap.entrySet()) {
+                    options.setCapability(entry.getKey(), entry.getValue());
+                }
+            }
+
+            // Implicit wait
+            options.setNewCommandTimeout(Duration.ofSeconds(capabilitiesBuilder.waitTimeInSeconds));
+
+            driver.set(new IOSDriver(serverUrl, options));
         }
 
-        if (!capabilitiesBuilder.extraCapabilitiesMap.isEmpty()) {
-            for (Map.Entry<String, String> entry : capabilitiesBuilder.extraCapabilitiesMap.entrySet()) {
-                capabilities.setCapability(entry.getKey(), entry.getValue());
-            }
-        }
-
-        capabilities.setCapability(MobileCapabilityType.APP, capabilitiesBuilder.app);
-        capabilities.setCapability(MobileCapabilityType.PLATFORM, capabilitiesBuilder.platform);
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, capabilitiesBuilder.deviceName);
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, capabilitiesBuilder.deviceName);
-
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, capabilitiesBuilder.platformVersion);
-
-        if (CommonUtils.isNotEmpty(capabilitiesBuilder.appiumVersion))
-            capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION, capabilitiesBuilder.appiumVersion);
-
-        // Set device orientation if not null or empty
-        if (CommonUtils.isNotEmpty(capabilitiesBuilder.orientation))
-            capabilities.setCapability("deviceOrientation", capabilitiesBuilder.orientation);
-
-        // Set browser name if not null or empty else set keyboard
-        if (CommonUtils.isNotEmpty(capabilitiesBuilder.browserName))
-            capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, capabilitiesBuilder.browserName);
-
-        capabilities.setCapability("unicodeKeyboardStatus", capabilitiesBuilder.unicodeKeyboardStatus);
-        capabilities.setCapability("resetKeyboardStatus", capabilitiesBuilder.resetKeyboardStatus);
-
-        if (capabilitiesBuilder.isSauceLab && CommonUtils.isNotEmpty(capabilitiesBuilder.sauceUsername) && CommonUtils.isNotEmpty(capabilitiesBuilder.sauceAccessKey)) {
-            if (capabilitiesBuilder.platform.equalsIgnoreCase(Platform.ANDROID)) {
-                driver.set(new AndroidDriver<>(new URL("http://" + capabilitiesBuilder.sauceUsername + ":" + capabilitiesBuilder.sauceAccessKey + "@ondemand.saucelabs.com:80/wd/hub"), capabilities));
-            } else {
-                driver.set(new IOSDriver<>(new URL("http://" + capabilitiesBuilder.sauceUsername + ":" + capabilitiesBuilder.sauceAccessKey + "@ondemand.saucelabs.com:80/wd/hub"), capabilities));
-            }
-        } else {
-            if (capabilitiesBuilder.platform.equalsIgnoreCase(Platform.ANDROID)) {
-                driver.set(new AndroidDriver<>(new URL(capabilitiesBuilder.appiumServerURL), capabilities));
-            } else {
-                driver.set(new IOSDriver<>(new URL(capabilitiesBuilder.appiumServerURL), capabilities));
-            }
-        }
         return driver.get();
     }
 

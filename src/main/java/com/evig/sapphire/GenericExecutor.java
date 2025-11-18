@@ -5,16 +5,18 @@ import com.evig.sapphire.constants.Platform;
 import com.evig.sapphire.provider.DriverProvider;
 import com.evig.sapphire.utils.CommonUtils;
 import com.relevantcodes.extentreports.LogStatus;
-import io.appium.java_client.MobileDriver;
-import io.appium.java_client.TouchAction;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 
 import javax.management.timer.Timer;
 import java.net.MalformedURLException;
+import java.time.Duration;
+import java.util.Collections;
 
 /**
  * This class is used to execute all generic actions on WebElement
@@ -692,19 +694,25 @@ public class GenericExecutor extends ElementInspector {
 
 
     /**
-     * Method to perform Scroll on screen
+     * Method to perform Scroll on screen using W3C Actions API (Appium 2.x compatible)
      *
-     * @param fromX
-     * @param fromY
-     * @param toX
-     * @param toY
+     * @param fromX starting X coordinate
+     * @param fromY starting Y coordinate
+     * @param toX   ending X coordinate
+     * @param toY   ending Y coordinate
      */
     public void performScroll(int fromX, int fromY, int toX, int toY) {
         extentReporter.trackReport(true, "Performing scroll from (" + fromX + "," + fromY + ") to (" + toX + "," + toY + ").");
-        TouchAction action = new TouchAction((MobileDriver<WebElement>) driver);
-        action.longPress(PointOption.point(fromX, fromY))
-                .moveTo(PointOption.point(toX, toY))
-                .release().perform();
+
+        // Use W3C Actions API (Appium 2.x compatible)
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 1)
+                .addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), fromX, fromY))
+                .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+                .addAction(finger.createPointerMove(Duration.ofMillis(1000), PointerInput.Origin.viewport(), toX, toY))
+                .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        ((AppiumDriver) driver).perform(Collections.singletonList(swipe));
     }
 
     /**
@@ -838,7 +846,7 @@ public class GenericExecutor extends ElementInspector {
      */
     public void openNotifications() {
         if (platform.equals(Platform.ANDROID)) {
-            AndroidDriver<AndroidElement> androidDriver = (AndroidDriver<AndroidElement>) driver;
+            AndroidDriver androidDriver = (AndroidDriver) driver;
             androidDriver.openNotifications();
         }
     }

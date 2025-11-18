@@ -13,7 +13,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * This class helps to inspect elements using WebDriver.
@@ -32,7 +31,8 @@ public class ElementInspector {
         this.platform = platform;
         this.driverProvider = driverProvider;
         this.driver = driverProvider.getDriver();
-        this.driver.manage().timeouts().implicitlyWait(driverProvider.capabilitiesBuilder.waitTimeInSeconds, TimeUnit.SECONDS);
+        // Selenium 4.x uses Duration instead of TimeUnit
+        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(driverProvider.capabilitiesBuilder.waitTimeInSeconds));
     }
 
     /**
@@ -769,7 +769,8 @@ public class ElementInspector {
             if (defaultWaitTimeInSeconds > 1000)
                 this.defaultWaitTimeInSeconds = defaultWaitTimeInSeconds / 1000;
             this.defaultWaitTimeInSeconds = defaultWaitTimeInSeconds;
-            this.driver.manage().timeouts().implicitlyWait(this.defaultWaitTimeInSeconds, TimeUnit.SECONDS);
+            // Selenium 4.x uses Duration instead of TimeUnit
+            this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(this.defaultWaitTimeInSeconds));
         }
     }
 
